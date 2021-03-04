@@ -1,5 +1,8 @@
 https://github.com/DeekshithSN/Unix_and_shell/blob/master/shell_scripts/folder_check.sh
 
+https://docs.github.com/en/rest/reference/pulls
+
+https://www.youtube.com/watch?v=X1kDA0RKJCQ
 
 curl -s -u srinivaspettigadi:Srinivas@493 https://api.github.com/repos/srinivaspettigadi/Linux/branches 
 GET /projects/:id/repository/branches
