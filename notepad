@@ -1,0 +1,56 @@
+https://github.com/DeekshithSN/Unix_and_shell/blob/master/shell_scripts/folder_check.sh
+
+
+curl -s -u srinivaspettigadi:Srinivas@493 https://api.github.com/repos/srinivaspettigadi/Linux/branches 
+GET /projects/:id/repository/branches
+
+
+
+GET /projects/:id/repository/branches
+
+curl -s -u srinivaspettigadi:Srinivas@493 https://api.github.com/repos/srinivaspettigadi/Linux/branches/testbranch | jq '.commit.commit.author.date' 
+
+presentdate=`date +'%s'`
+last_updated_date=$(curl -s -u srinivaspettigadi:Srinivas@493 https://api.github.com/repos/srinivaspettigadi/Linux/branches/testbranch | jq '.commit.commit.author.date')
+api_last_updated_date=$(echo $last_updated_date | cut -d'"' -f 2)
+last_updated_date_sec=$(date -d $api_last_updated_date +%s)
+echo $last_updated_date_sec
+numberofdays=$(( ($presentdate - $last_updated_date_sec)/(60) ))
+echo $numberofdays
+
+presentdate=`date +'%s'`
+pull_req_date=$(curl -s -u srinivaspettigadi:Srinivas@493  https://api.github.com/repos/srinivaspettigadi/Linux/pulls | jq '.[].updated_at')
+api_pull_req=$(echo $pull_req_date | cut -d'"' -f 2)
+pull_req_date_sec=$(date -d $api_pull_req +%s)
+echo $pull_req_date_sec
+numberofdays=$(( ($presentdate - $pull_req_date_sec)/(60) ))
+ if [ $numberofdays -gt 15 ] ; then
+        
+        echo "pull request is updated $numberofdays minutes back"
+     fi
+done
+
+
+https://github.com/DeekshithSN/Unix_and_shell/blob/master/shell_scripts/folder_check.sh
+
+https://api.github.com/repos/$user_name/$repo_name/branches --> get the branches name only
+
+curl -s -u srinivaspettigadi:Srinivas@493 https://api.github.com/repos/srinivaspettigadi/Linux/branches | jq '.[].name'
+
+curl -s -u srinivaspettigadi:Srinivas@493 https://api.github.com/repos/srinivaspettigadi/Linux/pulls | jq '.[].name' 
+
+https://api.github.com/repos/octocat/hello-world/pulls
+
+https://www.youtube.com/watch?v=_eYJyRK-yaY  --> push, pull, adding ssh key to github 
+https://docs.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent   --> adding ssh-key
+
+GET /repos/{owner}/{repo}/branches
+GET /repos/{owner}/{repo}/pulls
+curl -s -u srinivaspettigadi:Srinivas@493  https://api.github.com/repos/srinivaspettigadi/Linux/pulls | jq '.[].updated_at'
+
+
+
+
+
+
+
