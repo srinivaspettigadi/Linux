@@ -1,0 +1,21 @@
+presentdate=`date +'%s'`
+echo date is  $presentdate
+#var=$(for URL in `cat out.txt`; $(presentdate - $($URL | cut -d'"' -f 2) +%s)  );
+#var=$(for URL in `cat out.txt`; do echo $URL | cut -d'"' -f 2;  done )  
+
+for URL in `cat out.txt`;do
+        thechar=$(echo $URL | cut -d'"' -f 2) 
+        #echo $thechar +%s
+        pull=$(date -d $thechar +%s)
+        echo $pull
+        number=$(( ($presentdate - $pull)/(60) ))
+        echo num is $number
+         if [ $number -lt 192  ]
+         then
+         
+        echo "pull request is updated $number minutes back"
+        curl -X POST -H 'Content-type: application/json' --data '{"color":"red", "text":"'"${number}"'"}' https://hooks.slack.com/services/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
+      else 
+        echo "done" 
+         fi     
+done  
