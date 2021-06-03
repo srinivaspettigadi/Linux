@@ -1,5 +1,5 @@
 Addition of two numbers only if you enter numerics
-Usage of unset here in below addition script 
+Usage of unset here in below addition script , check below ./unset.sh
 
 ./unset.sh
 var="srinivas"
