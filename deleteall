@@ -1,0 +1,11 @@
+login to ECS instance:
+
+docker ps 
+docker stop <container name>
+docker rmi -a
+docker system prune -a
+
+
+
+Scale down the instances to zero in autoscaling group 
+Delete the ECS cluster
