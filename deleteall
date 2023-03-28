@@ -2,7 +2,7 @@ login to ECS instance:
 
 docker ps 
 docker stop <container name>
-docker rmi -a
+docker rmi $(docker images -a -q)
 docker system prune -a
 
 
