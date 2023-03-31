@@ -1,0 +1,7 @@
+{
+   "cluster": "string",
+   "reason": "string",
+   "task": "string"
+}
+
+https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_StopTask.html
