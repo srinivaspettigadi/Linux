@@ -1,0 +1,13 @@
+cd /home/ssm-user
+mkdir heapnow
+cd heapnow
+sleep 5
+cat << 'EOF' > down.sh
+for i in jattach gcore gdb ; do \
+      curl -L -o $i https://github.com/pwillis-els/docker-build-static/releases/download/v0.1.0/$i ; \
+done
+chmod 755 jattach gcore gdb
+EOF
+sleep 5
+chmod 755 down.sh
+./down.sh
