@@ -29,3 +29,20 @@ sudo ./jattach <process id which u got in 6th line> dumpheap /tmp/dumpheap-<same
 docker cp 8e1f316737c3:/tmp/dumpheap-28780.dump host-dumpheap-28780.dump
 
 docker exec -it <container id> rm /tmp/dumpheap-28780.dump
+
+
+
+UPDATED
+
+
+cd /home/ssm-user
+mkdir heapnew1
+cd  heapnew
+cat <<EOF >> download.sh
+for i in jattach gcore gdb ; do \
+      curl -L -o $i https://github.com/pwillis-els/docker-build-static/releases/download/v0.1.0/$i ; \
+done
+chmod 755 jattach gcore gdb
+EOF
+chmod +x download.sh
+sh download.sh
