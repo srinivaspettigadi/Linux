@@ -24,3 +24,20 @@ docker build -t java-app .
 docker run -d --name java-app-container java-app
 
 docker ps
+
+
+LATESSSSSSSSSSSSSSSS
+
+vi Dockerfile
+
+FROM openjdk:8
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    openjdk-8-dbg && \
+    rm -rf /var/lib/apt/lists/*
+
+CMD ["bash"]
+
+
+docker build -t my-jstack-jmap-image .
