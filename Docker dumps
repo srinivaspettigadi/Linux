@@ -1,0 +1,16 @@
+vi Dockerfile
+
+# Use a base image with Java installed
+FROM openjdk:11
+
+# Set the working directory
+WORKDIR /app
+
+# Copy your Java application JAR file to the container
+COPY your-app.jar /app/your-app.jar
+
+# Expose any ports your application might be using
+EXPOSE 8080
+
+# Define the entry point command to run your Java application
+CMD ["java", "-jar", "your-app.jar"]
