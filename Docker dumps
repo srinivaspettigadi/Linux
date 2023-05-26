@@ -14,3 +14,13 @@ EXPOSE 8080
 
 # Define the entry point command to run your Java application
 CMD ["java", "-jar", "your-app.jar"]
+
+
+NEXTTTTTTTTTTTTTTTTT
+
+
+docker build -t java-app .
+
+docker run -d --name java-app-container java-app
+
+docker ps
