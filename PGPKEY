@@ -1,0 +1,3 @@
+gpg --full-generate-key
+ gpg –export -a keyid > publickeyname.key
+gpg –export-secret-key -a keyid > privatekeyname.key
