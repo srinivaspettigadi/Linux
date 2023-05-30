@@ -1,3 +1,11 @@
 gpg --full-generate-key
  gpg –export -a keyid > publickeyname.key
 gpg –export-secret-key -a keyid > privatekeyname.key
+
+
+for version gpg 2.4.1
+
+gpg --armor --output private_key.asc --export-secret-keys [key-id]
+
+
+gpg --armor --output public_key.asc --export [key-id]
