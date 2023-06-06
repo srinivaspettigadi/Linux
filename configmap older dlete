@@ -20,3 +20,9 @@ for CONFIGMAP in $CONFIGMAPS; do
         kubectl delete configmap $CONFIGMAP -n $NAMESPACE
     fi
 done
+
+
+Older than 30 days
+
+
+kubectl get configmap -n <namespace> -o json | jq '.items[] | select((now - (.metadata.creationTimestamp | fromdate)) > 2592000)'
