@@ -26,3 +26,25 @@ Older than 30 days
 
 
 kubectl get configmap -n <namespace> -o json | jq '.items[] | select((now - (.metadata.creationTimestamp | fromdate)) > 2592000)'
+
+
+
+
+kubectl get configmaps -n <namespace> --no-headers=true > configmaps.txt
+
+touch filtered_configmaps.txt
+
+while read -r line; do
+  configmap_name=$(echo "$line" | awk '{print $1}')
+  creation_timestamp=$(echo "$line" | awk '{print $5}')
+  creation_date=$(date -d "$creation_timestamp" +%s)
+  current_date=$(date +%s)
+  difference=$(( (current_date - creation_date) / (60*60*24) ))
+
+  if [ $difference -gt 30 ]; then
+    echo "$line" >> filtered_configmaps.txt
+  fi
+done < configmaps.txt
+
+
+cat filtered_configmaps.txt
