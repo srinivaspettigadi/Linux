@@ -1,0 +1,17 @@
+
+Check the DNS service in the azure portal , then you can find which all services/dns are hosted.
+
+Open the URL and check the certificate details like :
+
+1. Certificate issuer
+2. Certificate expiry 
+3. All the chain certificates
+
+Renewal of certificate process :
+
+Login to the jumpserver of which DNS name has expired like (prod, QA, staging) : example <URL> 
+
+go to the respective environment server and go to below path:
+
+cd /mnt/s/le
+cd /mnt/s/le/dump
