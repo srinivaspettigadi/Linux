@@ -1,6 +1,29 @@
 Eventhough we have installed/downloaded the files its shows jheap or jstack not found
 
 
+docker inspect -f '{{.State.Pid}}' <paste the container id here>
+
+go to cd /home/ssm-user and then mkdir heap and then cd heap
+
+check pwd u must be in /home/ssm-user/heap
+
+vi download.sh
+
+paste this and save the file
+
+for i in jattach gcore gdb ; do \
+      curl -L -o $i https://github.com/pwillis-els/docker-build-static/releases/download/v0.1.0/$i ; \
+done
+chmod 755 jattach gcore gdb
+ 
+sudo ./jattach <process id which u got in 6th line> dumpheap /tmp/dumpheap-<sameid>.dump
+
+docker cp 8e1f316737c3:/tmp/dumpheap-28780.dump host-dumpheap-28780.dump
+
+docker exec -it <container id> rm /tmp/dumpheap-28780.dump
+
+TRY THIS TO FIX THE ISSUE 
+
 chmod +x jattach
 echo $PATH
 export PATH=/home/ssm-user/heapjattach:$PATH
