@@ -1,0 +1,7 @@
+Eventhough we have installed/downloaded the files its shows jheap or jstack not found
+
+
+chmod +x jattach
+echo $PATH
+export PATH=/home/ssm-user/heapjattach:$PATH
+source ~/.bashrc
