@@ -1,0 +1,20 @@
+sudo apt update
+sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+apt-cache policy docker-ce
+sudo apt install docker-ce -y
+sudo systemctl status docker
+
+Usually we get this error 
+
+permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Post "http://%2Fvar%2Frun%2Fdocker.sock/v1.24/auth": dial unix /var/run/docker.sock: connect: permission denied
+
+give permission to docker.sock file
+
+chmod 777 /var/run/docker.sock
+
+Try pulling any image using :
+
+docker pull ubuntu
+docker pull nginx
