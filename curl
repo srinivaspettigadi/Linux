@@ -1,0 +1,1 @@
+curl -X POST -H "Authorization: Basic $(echo -n 'YOUR_CLIENT_ID:YOUR_CLIENT_SECRET' | base64)" https://api.example.com/endpoint -v
