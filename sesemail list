@@ -63,3 +63,46 @@ while len(suppression_list) < max_records:
 # At this point, suppression_list contains all the records
 # Now, you can process or export this data as needed.
 
+
+
+
+
+
+
+
+
+
+
+
+
+import boto3
+
+# AWS SES client
+ses_client = boto3.client('ses', region_name='YOUR_REGION_NAME')
+
+# Pagination token to fetch all records
+next_token = None
+suppression_list = []
+
+# Number of records you want to fetch (in your case, 20,000)
+max_records = 20000
+
+while len(suppression_list) < max_records:
+    # Fetch a batch of suppressed email addresses
+    response = ses_client.list_suppressed_email_addresses(
+        MaxItems=100,  # Maximum items per request (can be adjusted)
+        NextToken=next_token
+    )
+    
+    # Add the batch to the suppression list
+    suppression_list.extend(response.get('SuppressedAddresses', []))
+    
+    # Check if there are more records to fetch
+    next_token = response.get('NextToken')
+    
+    if not next_token:
+        break
+
+# At this point, suppression_list contains all the records
+# Now, you can process or export this data as needed.
+
