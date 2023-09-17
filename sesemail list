@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Initialize variables
+output_file="suppression_list.txt"
+next_token=""
+
+# Loop to fetch and append results until NextToken is empty
+while true; do
+  # List suppressed destinations
+  result=$(aws ses list-suppressed-destinations --next-token "$next_token")
+
+  # Extract the suppression entries and append to the output file
+  echo "$result" | jq -r '.SuppressedDestinationSummaries[] | .EmailAddress' >> "$output_file"
+
+  # Check if there is a NextToken for pagination
+  next_token=$(echo "$result" | jq -r '.NextToken')
+
+  # If NextToken is empty, exit the loop
+  if [ -z "$next_token" ]; then
+    break
+  fi
+done
+
+echo "Suppression list downloaded to $output_file"
