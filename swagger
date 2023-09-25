@@ -1,3 +1,5 @@
+I want to configure swagger for my application, I have created a docker container below is the config,
+
 version: '3'
 
 services:
@@ -14,3 +16,13 @@ services:
 
 networks:
   appnet:
+  
+ 
+for the line :  - SWAGGER_JSON=/home/bdrkuser/swagger/swagger.json 
+
+I have used the swagger.json file from my existing env just to check if this works, now I am getting the authentication failed, 
+since the api for this env which i am going to configure does not get authenticated.
+
+The services which I want to configure is a docker service which is hosted on docker swarm cluster.
+
+Could you please let me know how can we generate a json file for my api calls for the docker service and enable the same on swagger.
