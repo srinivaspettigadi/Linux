@@ -2,25 +2,27 @@ provider "aws" {
   region = var.aws_region
 }
 
-resource "aws_vpc" {
-  cidr_block = var.vpc_cidr
-  # Add other VPC configuration as needed
+resource "aws_customer_gateway" "example" {
+  bgp_asn    = 65000
+  ip_address = var.customer_gateway_ip
+  type       = "ipsec.1"
 }
 
-resource "aws_customer_gateway" {
-  type       = var.cgw_type
-  bgp_asn    = var.cgw_bgp_asn
-  ip_address = var.cgw_ip_address
-  # Add other customer gateway configuration as needed
+resource "aws_vpn_gateway" "example" {
+  vpc_id = "your_vpc_id"
 }
 
-resource "aws_vpn_gateway" {
-  vpc_id = aws_vpc.example.id
-  # Add other VPN gateway configuration as needed
-}
-
-resource "aws_vpn_connection" {
+resource "aws_vpn_connection" "example" {
   customer_gateway_id = aws_customer_gateway.example.id
-  vpn_gateway_id     = aws_vpn_gateway.example.id
-  # Add other VPN connection configuration as needed
+  vpn_gateway_id      = aws_vpn_gateway.example.id
+
+  static_routes_only = false
+
+  tunnel1 {
+    pre_shared_key = "your_pre_shared_key1"
+  }
+
+  tunnel2 {
+    pre_shared_key = "your_pre_shared_key2"
+  }
 }
