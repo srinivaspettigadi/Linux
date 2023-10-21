@@ -1,5 +1,11 @@
-variable "aws_region" {}
-variable "vpc_cidr" {}
-variable "cgw_type" {}
-variable "cgw_bgp_asn" {}
-variable "cgw_ip_address" {}
+variable "aws_region" {
+  description = "The AWS region where the VPN connection will be created."
+  type        = string
+}
+
+variable "customer_gateway_ip" {
+  description = "The IP address of the customer gateway."
+  type        = string
+}
+
+# Add more variables as needed
