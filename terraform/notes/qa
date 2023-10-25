@@ -1,0 +1,15 @@
+
+
+We have been creating all the resources with terraform, but this will create all the resources independently like vpc, subnet etc..
+
+We must have an architecture of which cluster or stack we are going to create and make sure we must share the componenets which are required.
+
+Now currently I have created virtual private gateway and others have created variuos resources, common resources must not be created more than once, and 
+also we can create once and use those components in sample.tfvars and pass it to the compoenents which we create.
+
+We have use terraform.tfvars and add all the vpc id and subnets which we need to create the actual/main resource, we have to pass this terraform.tfvars file while apply command
+
+terraform apply --var-file=sample.tfvars
+
+Current approach which we are using will create lot of duplicate resources, please create an architecture and we shall split the componenets which are required to
+build the stack.
