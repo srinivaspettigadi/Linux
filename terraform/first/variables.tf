@@ -1,7 +1,7 @@
 variable "vpc_name" {
   description = "Name for the VPC"
   type        = string
-  default     = "BMDEV-TF"
+  default     = "TF"
 }
 
 variable "vpc_cidr" {
