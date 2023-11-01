@@ -1,3 +1,9 @@
+terraform {
+  required_version = ">= 1.6.3"
+
+  backend "local" {}
+}
+
 provider "aws" {
   region = "us-east-2" # Update with your desired region
 }
