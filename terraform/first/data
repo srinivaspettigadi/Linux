@@ -1,0 +1,12 @@
+
+Let us replicate all the components/services with the existing one and create in the ohio region. Lets us create the shared resources first and use the same one for 
+independent resources.
+
+Shared Resources like : VPC, SUBNET, security group, etc..
+
+Firstly will be creating all the shared resources and will hardcode all the values in config.tfvars, whenever we are creating a new resouce which requires
+these shared resouces will be passing the config.tfvars explicitly in the terraform apply command.
+
+Let us not create anything on local as far as state file is concerned, will push all the to the s3 bucket, and use those.
+
+I have created a state file in s3 and created a vpc successfully with defined cidr blocks
