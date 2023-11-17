@@ -1,0 +1,17 @@
+There are many different Kafka topics that can be used for integrating MSK with Coralogix. The specific topic that you need to use will depend on your specific needs and requirements.
+
+Here are some factors to consider when choosing a Kafka topic:
+
+The type of data that you are integrating
+The volume of data that you are integrating
+The frequency of data integration
+The latency requirements for data integration
+The security requirements for data integration
+Once you have considered these factors, you can start to narrow down your options and choose the Kafka topic that is best suited for your needs.
+
+Here are some examples of Kafka topics that can be used for integrating MSK with Coralogix:
+
+msk-coralogix-logs: This topic can be used to store logs from MSK brokers.
+msk-coralogix-metrics: This topic can be used to store metrics from MSK brokers.
+msk-coralogix-events: This topic can be used to store events from MSK brokers.
+You can also create your own custom Kafka topics to meet your specific needs.
