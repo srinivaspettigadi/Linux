@@ -1,0 +1,15 @@
+source_folder="/var/lib/jenkins"
+exclude_folder="workspace"
+backup_date=$(date +"%Y%m%d_%H%M%S")
+backup_folder="/tmp/jenkins_${backup_date}"
+
+# Create the backup folder in /tmp
+mkdir -p "$backup_folder"
+
+# Use rsync to copy the contents, excluding the specified folder
+rsync -av --exclude="$exclude_folder" "$source_folder/" "$backup_folder/"
+
+# Optional: You can also create a tar archive if needed
+tar -czf "${backup_folder}.tar.gz" -C /tmp "jenkins_${backup_date}"
+
+echo "Backup completed. The backup is located at: $backup_folder"
